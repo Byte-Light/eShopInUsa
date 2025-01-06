@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
   
           {/* Footer Bottom */}
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} TechAffiliate. All rights reserved.</p>
+            <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} eShopInUsa. All rights reserved.</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="#" className="hover:text-white">
                 <svg
