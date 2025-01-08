@@ -12,38 +12,39 @@ const categories: Category[] = [
     id: 1,
     name: "Laptops",
     description: "Find the best laptops for work, gaming, or personal use.",
-    link: "/categories/laptops",
+    link: "/categories/1", // Use categoryId directly
     icon: "💻",
   },
   {
     id: 2,
     name: "Smartphones",
     description: "Explore the latest smartphones and their features.",
-    link: "/categories/smartphones",
+    link: "/categories/2",
     icon: "📱",
   },
   {
     id: 3,
     name: "Accessories",
     description: "Discover essential tech accessories for all your devices.",
-    link: "/categories/accessories",
+    link: "/categories/3",
     icon: "🎧",
   },
   {
     id: 4,
     name: "External Storage",
     description: "Expand your storage with reliable external devices.",
-    link: "/categories/external-storage",
+    link: "/categories/4",
     icon: "💾",
   },
   {
     id: 5,
     name: "Chargers & Power Banks",
     description: "Stay powered up with chargers and power banks.",
-    link: "/categories/chargers-power-banks",
+    link: "/categories/5",
     icon: "🔋",
   },
 ];
+
 
 const TopCategories: React.FC = () => {
   return (
