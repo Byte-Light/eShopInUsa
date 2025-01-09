@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import mysql, { RowDataPacket } from "mysql2/promise";
+import { NextRequest, NextResponse } from "next/server";
+import mysql from "mysql2/promise";
 
 const dbConfig = {
   host: "82.197.82.55",
@@ -8,7 +8,7 @@ const dbConfig = {
   database: "u201082593_aff2025",
 };
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get("query");
 
@@ -20,8 +20,8 @@ export async function GET(req: Request) {
   try {
     connection = await mysql.createConnection(dbConfig);
 
-    const [rows] = await connection.execute<RowDataPacket[]>(
-      `SELECT id, name, description, price, image_url AS imageUrl 
+    const [rows] = await connection.execute(
+      `SELECT id, name, description, price, image_url AS imageUrl, affiliate_link AS affiliateLink 
        FROM products 
        WHERE name LIKE ? LIMIT 10`,
       [`%${query}%`]
