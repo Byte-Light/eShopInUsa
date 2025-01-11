@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState, Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 interface Product {
   id: number;
@@ -11,6 +11,9 @@ interface Product {
   imageUrl: string;
   affiliateLink: string;
 }
+
+// Dynamic route configuration to avoid static generation issues
+export const dynamic = "force-dynamic";
 
 const SearchResults: React.FC<{ query: string }> = ({ query }) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -45,7 +48,11 @@ const SearchResults: React.FC<{ query: string }> = ({ query }) => {
     return <div>Error: {error}</div>;
   }
 
-  return products.length > 0 ? (
+  if (products.length === 0) {
+    return <div>No products found for "{query}".</div>;
+  }
+
+  return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {products.map((product) => (
         <li
@@ -71,8 +78,6 @@ const SearchResults: React.FC<{ query: string }> = ({ query }) => {
         </li>
       ))}
     </ul>
-  ) : (
-    <p>No products found.</p>
   );
 };
 
@@ -81,12 +86,12 @@ const SearchPage: React.FC = () => {
   const query = searchParams.get("query") || "";
 
   return (
-    <Suspense fallback={<div>Loading search page...</div>}>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-4">Search Results for "{query}"</h1>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-4">Search Results for "{query}"</h1>
+      <Suspense fallback={<div>Loading search results...</div>}>
         <SearchResults query={query} />
-      </div>
-    </Suspense>
+      </Suspense>
+    </div>
   );
 };
 
