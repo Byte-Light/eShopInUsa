@@ -1,9 +1,10 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  // Use standalone mode to ensure the app runs properly on Netlify
-  output: "standalone",
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "standalone", // Required for Netlify
   reactStrictMode: true,
+  experimental: {
+    serverActions: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
