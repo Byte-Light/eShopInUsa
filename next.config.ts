@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Use standalone mode to ensure the app runs properly on Netlify
+  output: "standalone",
+  reactStrictMode: true,
 };
 
 export default nextConfig;
