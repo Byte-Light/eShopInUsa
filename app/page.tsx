@@ -1,4 +1,3 @@
-import DealsSection from "@/components/home/DealsSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import HeroSection from "@/components/home/HeroSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -10,7 +9,6 @@ export default function Home() {
     <HeroSection />
     <TopCategories />
     <FeaturedProducts />
-    <DealsSection />
     <TestimonialsSection />
    </div>
   );
